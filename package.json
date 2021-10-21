@@ -1,0 +1,24 @@
+{
+  "name": "Examen_Practico_2_Francisco_Arenas",
+  "version": "1.0.0",
+  "description": "Desarrollo de la solución del segundo examen parcial de la materia de Desarrollo de aplicaciones web. Su descripción aparece a continuación:",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FA0AE/Examen_Practico_2_Francisco_Arenas.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FA0AE/Examen_Practico_2_Francisco_Arenas/issues"
+  },
+  "homepage": "https://github.com/FA0AE/Examen_Practico_2_Francisco_Arenas#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^6.0.12"
+  }
+}
