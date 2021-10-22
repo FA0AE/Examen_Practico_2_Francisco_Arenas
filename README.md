@@ -23,3 +23,16 @@ La verificación se tiene que hacer por medio de postman usando las siguientes r
 # post para agregar una localidad ->  'localhost:8080/location/agregarUbicacion'
 # get para obtener una localidad ->  'localhost:8080/location/obtenerUbicaciones'
 ```
+
+## Screenshots de prueba
+* Servicio de dar de alta una nueva localidad
+![create](https://user-images.githubusercontent.com/42308682/138467829-59a20c71-c1d4-4fae-810d-891dbfdfc615.png)
+
+* Servicio de actualizar el nivel de interes de un lugar
+![update](https://user-images.githubusercontent.com/42308682/138467896-d3887483-9115-4203-b885-160900e941e7.png)
+
+* Servicio de ver todos los lugares registrados
+![see all](https://user-images.githubusercontent.com/42308682/138467982-170443b2-f7f2-4adf-9c75-f7f17513a7ab.png)
+
+* Servicio de ver los lugares por un país específico
+![locations by country](https://user-images.githubusercontent.com/42308682/138467938-9c8a7e3e-ec32-4d52-af8a-8c265d1de308.png)
