@@ -2,41 +2,50 @@ const Location = require("../models/location-model")
 const mongoose = require("mongoose")
 
 exports.postAddLocation = async(req, res) => {
-    var get_city = req.body.city;
+    const get_city = req.body.city;
     
     // Check if it already exists!
     const location_exists = await Location.findOne({city: get_city}).exec()
 
-    if(location_exists.length == 0) {
-        // No existe
-        const elemento = new Location(req.body)
-        elemento._id = new mongoose.Types.ObjectId()
+    if (location_exists == null) {
+        // Then... it does not exist
+        const new_location = new Location(req.body)
+        new_location._id = new mongoose.Types.ObjectId()
+
         try {
-            //Agregar el documento a la colección
-            await elemento.save()
-            console.log(elemento)
-            console.log("Location saved!")
-            res.send({operacion:"correcta"})
+            // Add document to the collection
+            await new_location.save()
+            console.log("Location saved correctly!")
+            res.send({status:"Document Saved"})
         } catch(err) {
             console.log(err)
-            res.send({operacion: "incorrecta"})
+            res.send({status: "Error while saving document!"})
         }
     } else {
-        try{
-            await Location.findOneAndUpdate(get_city, {$inc: {interest_counter: 1}})
-            console.log("Updated interest!")
-            res.json({operacion: "correcta"})
-        }catch(err){
+        // It does exist, thus, increment interest level
+        try {
+            await Location.findOneAndUpdate({city: get_city}, {$inc: {interest_counter: 1}})
+            console.log("This location is already registered. So its interest level has been updated!")
+            res.json({status: "Document updated correctly!"})
+        } catch(err) {
             console.log(err)
-            res.json({operacion: "incorrecta"})
+            res.json({status: "Error while updating document!"})
         }
-        console.log("This location is already registered. So its interest level has been updated!")
-    }
-    
+    }   
 }
 
 exports.getLocations = async(req, res) => {
-    const elem = await Location.find()
-    console.log(elem)
-    res.json(elem)
+    const get_country = req.body.country
+
+    if (get_country == undefined) {
+        // No country was specified in the get operation
+        const complete_location_list = await Location.find()
+        console.log(complete_location_list)
+        res.json(complete_location_list)
+    } else {
+        // Show the locations from a specific country 
+        const location_by_country = await Location.find({country: get_country}).exec()
+        console.log(location_by_country)
+        res.json(location_by_country)
+    }
 }
